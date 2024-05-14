@@ -1,0 +1,24 @@
+.btn-floating {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #007bff; /* Cor de fundo do botão */
+    color: #fff; /* Cor do ícone */
+    border-radius: 50%; /* Tornando o botão redondo */
+    text-align: center;
+    line-height: 50px; /* Centralizando verticalmente o ícone */
+    font-size: 24px; /* Tamanho do ícone */
+    text-decoration: none; /* Removendo sublinhado do link */
+    transition: background-color 0.3s; /* Adicionando transição de cor de fundo */
+  }
+  
+  .btn-floating:hover {
+    background-color: #0056b3; /* Cor de fundo do botão ao passar o mouse */
+  }
+  
+  .fa-plus {
+    vertical-align: middle; /* Centralizando verticalmente o ícone */
+  }
+  

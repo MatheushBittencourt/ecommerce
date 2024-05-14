@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head th:include="layout :: htmlhead"></head>
+
+<body>
+	<div th:replace="layout :: navbar"></div>
+
+	<main class="container">
+		<h1>Produto</h1>
+		<form th:action="@{/admin/products}" th:object="${produto}" method="post" class="d-flex flex-column gap-4">
+
+			<input type="hidden" th:field="*{id}">
+
+			<div class="row">
+				<div class="col-6">
+					<div class="form-group">
+						<label for="nome" class="form-label">Nome</label>
+						<input type="text" name="nome" id="nome" th:field="*{nome}" class="form-control">
+					</div>
+				</div>
+				<div class="col-6">
+					<div class="form-group">
+						<label for="preco" class="form-label">Preço</label>
+						<input type="text" name="preco" id="preco" th:field="*{preco}" class="form-control">
+					</div>
+				</div>
+			</div>
+			<div class="row d-flex align-items-center">
+				<div class="col-2">
+					<div class="form-check form-switch">
+						<input class="form-check-input" name="promocao" type="checkbox" role="switch"
+							id="promocaoSwitch">
+						<label class="form-check-label" th:field="*{promocao}" for="promocaoSwitch">Em promoção</label>
+					</div>
+				</div>
+				<div class="col-10">
+					<div class="form-group">
+						<label for="precoAnterior" class="form-label">Preço anterior</label>
+						<input type="text" name="precoAnterior" id="precoAnterior" th:field="*{precoAnterior}"
+							class="form-control">
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12">
+					<div action="/upload" class="dropzone rounded-3" style="border-style: dashed;" id="fileupload"
+						name="fileupload"></div>
+					<input type="hidden" value="">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12 d-flex justify-content-between">
+					<a class="btn btn-outline-secondary">
+						Voltar
+					</a>
+					<button class="btn btn-primary" type="submit">
+						Enviar
+					</button>
+				</div>
+			</div>
+		</form>
+	</main>
+
+	<footer th:replace="layout :: footer">(footer)</footer>
+</body>
+
+</html>
