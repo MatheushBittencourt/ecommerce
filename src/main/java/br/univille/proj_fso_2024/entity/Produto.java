@@ -19,12 +19,14 @@ public class Produto {
     private String nome;
 	@Column(length = 6, nullable = false)
     private Float preco;
-	@Column(nullable = true)
-    private String imagem;
+	// @Column(nullable = true)
+    // private String imagem;
 	@Column(nullable = true)
 	private Boolean promocao;
 	@Column(nullable = true)
 	private Float precoAnterior;
+	@Column(nullable = true)
+	private Integer quantidadeEstoque; // Adicionando a propriedade quantidadeEstoque
 
 	public Long getId() {
 		return id;
@@ -44,12 +46,12 @@ public class Produto {
 	public void setPreco(Float preco) {
 		this.preco = preco;
 	}
-	public String getImagem() {
-		return imagem;
-	}
-	public void setImagem(String imagem) {
-		this.imagem = imagem;
-	}
+	// public String getImagem() {
+	// 	return imagem;
+	// }
+	// public void setImagem(String imagem) {
+	// 	this.imagem = imagem;
+	// }
 	public Boolean getPromocao() {
 		return promocao;
 	}
@@ -62,5 +64,10 @@ public class Produto {
 	public void setPrecoAnterior(Float precoAnterior) {
 		this.precoAnterior = precoAnterior;
 	}
-	
+	public Integer getQuantidadeEstoque() { // Getter para quantidadeEstoque
+		return quantidadeEstoque;
+	}
+	public void setQuantidadeEstoque(Integer quantidadeEstoque) { // Setter para quantidadeEstoque
+		this.quantidadeEstoque = quantidadeEstoque;
+	}
 }

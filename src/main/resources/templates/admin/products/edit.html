@@ -5,64 +5,62 @@
 
 <body>
 	<div th:replace="layout :: navbar"></div>
-
-	<main class="container">
-		<h1>Produto</h1>
-		<form th:action="@{/admin/products}" th:object="${produto}" method="post" class="d-flex flex-column gap-4">
-
+	<main class="container my-5">
+		<h1 class="mb-4">Editar Produto</h1>
+		<form th:action="@{/admin/products/{id}(id=${produto.id})}" th:object="${produto}" method="post"
+			class="row g-3">
 			<input type="hidden" th:field="*{id}">
-
-			<div class="row">
-				<div class="col-6">
-					<div class="form-group">
-						<label for="nome" class="form-label">Nome</label>
-						<input type="text" name="nome" id="nome" th:field="*{nome}" class="form-control">
-					</div>
+			<div class="col-md-6">
+				<div class="form-floating mb-3">
+					<input type="text" name="nome" id="nome" th:field="*{nome}" class="form-control" placeholder="Nome"
+						required>
+					<label for="nome" class="form-label">Nome</label>
 				</div>
-				<div class="col-6">
-					<div class="form-group">
-						<label for="preco" class="form-label">Preço</label>
-						<input type="text" name="preco" id="preco" th:field="*{preco}" class="form-control">
+				<div class="form-floating mb-3">
+					<input type="text" name="preco" id="preco" th:field="*{preco}" class="form-control"
+						placeholder="Preço" required>
+					<label for="preco" class="form-label">Preço</label>
+				</div>
+					<div class="form-floating mb-3">
+						<input type="number" name="quantidadeEstoque" id="quantidadeEstoque" th:field="*{quantidadeEstoque}"
+							class="form-control" placeholder="Quantidade em estoque" required>
+						<label for="quantidadeEstoque" class="form-label">Quantidade em estoque</label>
 					</div>
+				<div class="form-check form-switch mb-3">
+					<input class="form-check-input" name="promocao" type="checkbox" role="switch" id="promocaoSwitch"
+						th:field="*{promocao}">
+					<label class="form-check-label" for="promocaoSwitch">Em promoção</label>
+				</div>
+				<div class="form-floating mb-3" id="precoAnteriorContainer" th:if="${produto.promocao}">
+					<input type="text" name="precoAnterior" id="precoAnterior" th:field="*{precoAnterior}"
+						class="form-control" placeholder="Preço anterior">
+					<label for="precoAnterior" class="form-label">Preço anterior</label>
 				</div>
 			</div>
-			<div class="row d-flex align-items-center">
-				<div class="col-2">
-					<div class="form-check form-switch">
-						<input class="form-check-input" name="promocao" type="checkbox" role="switch"
-							id="promocaoSwitch">
-						<label class="form-check-label" th:field="*{promocao}" for="promocaoSwitch">Em promoção</label>
-					</div>
+			<!-- <div class="col-md-6">
+				<div class="dropzone rounded-3 border border-dashed mb-3" id="fileupload" name="fileupload">
+					Arraste e solte arquivos aqui ou clique para selecionar
 				</div>
-				<div class="col-10">
-					<div class="form-group">
-						<label for="precoAnterior" class="form-label">Preço anterior</label>
-						<input type="text" name="precoAnterior" id="precoAnterior" th:field="*{precoAnterior}"
-							class="form-control">
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-12">
-					<div action="/upload" class="dropzone rounded-3" style="border-style: dashed;" id="fileupload"
-						name="fileupload"></div>
-					<input type="hidden" value="">
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-12 d-flex justify-content-between">
-					<a class="btn btn-outline-secondary">
-						Voltar
-					</a>
-					<button class="btn btn-primary" type="submit">
-						Enviar
-					</button>
-				</div>
+				<input type="hidden" name="imagens" id="imagens" th:field="*{imagens}">
+			</div> -->
+			<div class="col-12 d-flex justify-content-end">
+				<a th:href="@{/admin/products}" class="btn btn-outline-secondary me-2">Voltar</a>
+				<button type="submit" class="btn btn-primary">Salvar</button>
 			</div>
 		</form>
 	</main>
-
 	<footer th:replace="layout :: footer">(footer)</footer>
+	<script>
+		const promocaoSwitch = document.getElementById('promocaoSwitch');
+		const precoAnteriorContainer = document.getElementById('precoAnteriorContainer');
+
+		promocaoSwitch.addEventListener('change', () => {
+			precoAnteriorContainer.style.display = promocaoSwitch.checked ? 'block' : 'none';
+		});
+
+		// Inicializa o estado do container de preço anterior
+		precoAnteriorContainer.style.display = promocaoSwitch.checked ? 'block' : 'none';
+	</script>
 </body>
 
 </html>

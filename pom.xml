@@ -27,6 +27,11 @@
 			<artifactId>font-awesome</artifactId>
 			<version>5.15.4</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>5.3.14</version> <!-- ou a versão mais recente -->
+		</dependency>
 		
 
 		<dependency>
