@@ -1,67 +1,63 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 
-<head th:include="layout :: htmlhead"></head>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-	integrity="sha512-dE5oR1u5zrUV/0A7yQKSL5m8bC9XSdmVsntFQzuxkA6StJasBlc3/zvC2sdOdZGpg+9R8UToI5EJzB9J4QVpWg=="
-	crossorigin="anonymous" />
+<head th:include="layout :: htmlhead">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-dE5oR1u5zrUV/0A7yQKSL5m8bC9XSdmVsntFQzuxkA6StJasBlc3/zvC2sdOdZGpg+9R8UToI5EJzB9J4QVpWg=="
+        crossorigin="anonymous" />
+</head>
 
 <body>
-	<div th:replace="layout :: navbar"></div>
+    <div th:replace="layout :: navbar"></div>
 
-	<a href="/admin/products/create" class="btn btn-primary">Novo Produto</a>
-	<a href="/admin/products/create" class="btn btn-floating">
-		<i class="fas fa-plus"></i>
-	</a>
-
-
-
-	<div class="container">
-		<table class="table" id="products_list">
-			<thead>
-				<tr>
-					<th>Produto</th>
-					<th>Valor</th>
-					<th>Valido</th>
-					<th>Preço anterior</th>
-					<th>Ações</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="produto: ${produtos}">
-					<td th:text="${produto.nome}"></td>
-					<td th:text="${produto.preco}"></td>
-					<td th:text="${produto.promocao}"></td>
-					<td th:text="${produto.precoAnterior}"></td>
-					<td>
-						<a th:href="@{/admin/products/edit/{id}(id=${produto.id})}" class="btn btn-primary">Editar</a>
-						<button class="btn btn-danger js-delete" th:data-id="${produto.id}">Excluir</button>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-
-	<div class="modal" tabindex="-1" id="modalDelete">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title">Excluir</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-					<p>Deseja excluir o registro?</p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-					<button type="button" class="btn btn-danger" id="delete_button">Excluir</button>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<footer th:replace="layout :: footer">(footer)</footer>
-	<script th:src="@{/js/app.js}"></script>
+    <a href="/admin/products/create" class="btn btn-primary">Novo Produto</a>
+    <a href="/admin/products/create" class="btn btn-floating">
+        <i class="fas fa-plus"></i>
+    </a>
+    <div class="container">
+        <table class="table" id="products_list">
+            <thead>
+                <tr>
+                    <th>Produto</th>
+                    <th>Valor</th>
+                    <th>Valido</th>
+                    <th>Quantidade em estoque</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="produto: ${produtos}">
+                    <td th:text="${produto.nome}"></td>
+                    <td th:text="${produto.preco}"></td>
+                    <td th:text="${produto.promocao}"></td>
+                    <td th:text="${produto.precoAnterior}"></td>
+                    <td>
+                        <a th:href="@{/admin/products/edit/{id}(id=${produto.id})}" class="btn btn-primary">Editar</a>
+                        <button class="btn btn-danger js-delete" th:data-id="${produto.id}">Excluir</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="modal" tabindex="-1" id="modalDelete">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Excluir</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Deseja excluir o registro?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                    <button type="button" class="btn btn-danger" id="delete_button">Excluir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer th:replace="layout :: footer">(footer)</footer>
+    <script th:src="@{/js/app.js}"></script>
 </body>
 
 </html>

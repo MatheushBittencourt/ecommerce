@@ -7,23 +7,28 @@
     <link rel="stylesheet" th:href="@{/webjars/jquery-ui/1.13.2/jquery-ui.css}" />
     <link rel="stylesheet" th:href="@{/site.css}" />
     <link rel="stylesheet" th:href="@{../../static/css/cadastro.css}">
-	<link rel="stylesheet" th:href="@{/webjars/font-awesome/5.15.4/css/all.min.css}" />
+    <link rel="stylesheet" th:href="@{/webjars/font-awesome/5.15.4/css/all.min.css}" />
 
 
 </head>
 
 <body>
 
-    <nav th:fragment="navbar" class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-light bg-light ">
         <div class="container">
-            <a class="navbar-brand" href="#"><img src="../static/images/Logo - HeaderFooter.svg" alt=""></a>
-            <img src="../static/" alt="">
+            <a class="navbar-brand" href="#">
+                <img th:src="@{/images/Logo.svg}" alt="Logo">
+            </a>
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Features</a>
                     </li>
@@ -31,14 +36,46 @@
                         <a class="nav-link" href="#">Pricing</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./home/login.html">Minha conta</a>
+                        <a class="nav-link" href="./home/login.html">Minha Conta</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-shopping-cart me-1"></i> Carrinho</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-
     <div th:fragment="footer" id="footer">
+        <footer class="footer pt-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h5>Links Úteis</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Sobre</a></li>
+                            <li><a href="#">Produtos</a></li>
+                            <li><a href="#">Contato</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6">
+                        <h5>Redes Sociais</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                            <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                            <li><a href="#"><i class="fab fa-linkedin-in"></i> LinkedIn</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <p>&copy; 2024 BB. Todos os direitos reservados.</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
         <script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
         <script th:src="@{/webjars/bootstrap/5.1.3/js/bootstrap.min.js}"></script>
     </div>
